@@ -1,24 +1,24 @@
-import java.util.Date;
+import java.time.LocalDate;
 
-public abstract  class Song {
+public class Song {
     private String name;
     private Integer id;
-    private Date date;
+    private LocalDate date;
     private Double duration;
+    private String genre;
     private  String cover;
     private  String description;
 
-    public abstract void play();
-    public abstract  void pause(int time);
-    public abstract void next();
 
-    public Song(String name, Integer id, Date date, Double duration, String cover, String description) {
+    protected Song(String name, Integer id, LocalDate date, Double duration, String cover, String description) {
         this.name = name;
         this.id = id;
         this.date = date;
         this.duration = duration;
         this.cover = cover;
         this.description = description;
+    }
+    public Song() {
     }
 
     public String getName() {
@@ -37,11 +37,11 @@ public abstract  class Song {
         this.id = id;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -53,6 +53,13 @@ public abstract  class Song {
         this.duration = duration;
     }
 
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
     public String getCover() {
         return cover;
     }
@@ -67,5 +74,10 @@ public abstract  class Song {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return  id+", "+ name + ", " + date + ", " + duration + ", " + genre + ", " + cover + ", " + description;
     }
 }
