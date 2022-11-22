@@ -64,7 +64,7 @@ public class ShowPlayLists {
                             System.out.println(this.listToList.get(i).get(j).toString());
                         }return;
                     }
-                }System.out.println("la opción elegida no existe");
+                }
             } catch (InputMismatchException e) {
                 System.out.println("Solo debe ingresar números dentro de las opciones disponibles");
             }

@@ -8,9 +8,9 @@ import java.util.Objects;
 
 /**
  * Clase está compuesta de métodos que permiten al usuario crear una nueva playList
- * @version 0.00.001 2022-11-21
+ * @version 0.00.002 2022-11-21
  * @author Wendy Arcila wendy.arcilar@gmail.com
- * @since 0.00.001 2022-11-21
+ * @since 0.00.002 2022-11-21
  */
 public class CreatePlayList {
 
@@ -22,10 +22,16 @@ public class CreatePlayList {
      * Integra los métodos para crear una nueva playlist y finaliza mostrando la playList creada.
      */
     public void newPlayList(List<Song> songList){
-        Integer[] songsSelected = parseIntChoice();
-        List<Song> newSongList = createdNewList(songList, songsSelected);
-        showPlayLists.addPlayList(newSongList);
-        showNewPlayList(newSongList);
+        for (int i = 0; i < songList.size() ; i++) {
+           Integer[] songsSelected = parseIntChoice();
+           List<Song> newSongList= createdNewList(songList, songsSelected);
+           if(!newSongList.isEmpty()) {
+               showPlayLists.addNamePlayList(choiceName());
+               showPlayLists.addPlayList(newSongList);
+               showNewPlayList(newSongList);
+               return;
+           }
+       }
     }
 
     /**
@@ -74,7 +80,6 @@ public class CreatePlayList {
                 newList.add(compareSelectSong(songList, integer));
             }
         }
-        showPlayLists.addNamePlayList(choiceName());
         return newList;
     }
 
